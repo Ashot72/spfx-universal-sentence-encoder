@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "amazon-reviews-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/amazonReviews/AmazonReviewsCommandSet.js",
+          "manifest": "./src/extensions/amazonReviews/AmazonReviewsCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AmazonReviewsCommandSetStrings": "lib/extensions/amazonReviews/loc/{locale}.js"
+  }
+}

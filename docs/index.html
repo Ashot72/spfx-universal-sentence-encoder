@@ -1,0 +1,651 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:16.0pt;line-height:107%'>Amazon Reviews <i>Sentiment
+Classifications</i> and <i>Textual Similarities</i> with Universal Sentence
+Encoder.</span></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>GitHub
+Repository: <a href="https://github.com/Ashot72/spfx-universal-sentence-encoder"
+target="_blank">https://github.com/Ashot72/spfx-universal-sentence-encoder</a></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>Video
+Link: </span><a href="https://youtu.be/6e3TPawyhRQ" target="_blank"><span
+style='font-size:14.0pt;line-height:107%'>https://youtu.be/6e3TPawyhRQ</span></a></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></b></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>Sentiment
+classification </span></i><span style='font-size:14.0pt;line-height:107%'>is
+the task of looking at a piece of text and telling if someone likes or dislikes
+the thing, they are talking about.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The input X
+is a piece of text and the output Y is the sentiment which we want to predict,
+such as the star rating of a movie review.</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>The movie
+is fantastic</span></i><span style='font-size:14.0pt;line-height:107%'> - <i>4
+starts</i></span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>The movie
+really sucks ­</span></i><span style='font-size:14.0pt;line-height:107%'>- 1
+star</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>Textual
+Similarities­</span></i><span style='font-size:14.0pt;line-height:107%'> - is
+that sentences are semantically similar if they have a similar distribution of
+responses. For example,</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>How old
+are you? </span></i><span style='font-size:14.0pt;line-height:107%'>and <i>What
+is your age? </i>are both questions about the age, which can be answered by
+similar responses </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>such as <i>I
+am 48 years old</i>. In contrast, while <i>How are you? </i>and <i>How old are
+you? </i>contain almost identical words, they have very different meanings </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>and lead to different
+responses.</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>Universal
+Sentence Encoder</span></i><span style='font-size:14.0pt;line-height:107%'> - </span><a
+href="https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder"
+target="_blank"><span style='font-size:14.0pt;line-height:107%'>https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder</span></a><span
+style='font-size:14.0pt;line-height:107%'> encodes text into 512</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>embeddings
+(we will discuss embeddings) and uses a vocabulary of 8000 words. An additional
+benefit of the model is that it is trained on short</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>sentences/phrases
+(e.g. amazon short comments).</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>The model
+is trained and optimized for greater-than-word length text, such as sentences,
+phrases or short paragraphs. It is trained on a </span></i></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>variety
+of data sources and a variety of tasks with the aim of dynamically
+accommodating a wide variety of natural language understanding</span></i></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>tasks.</span></i></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In our
+Amazon Reviews SharePoint SPFx-extension we make use of <i>Universal Sentence
+Encoder lite </i>model </span></p>
+
+<p class=MsoNormal><a
+href="https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder"
+target="_blank"><span style='font-size:14.0pt;line-height:107%'>https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder</span></a><span
+style='font-size:14.0pt;line-height:107%'> to rate a comment/review based on
+the predefined existing </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>reviews and
+find a similar review.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%'>One-Hot/Multi-Hot
+Encoding</span></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In deep
+learning, values are mostly represented as float-type tensors (floating-point
+numbers) but it is different with <i>text</i>. Text data are based on</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>characters, not
+real numbers. That makes things difficult as there is no connection between
+say,<i> k</i> and <i>p</i> in the same sense as a number </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>between 1.23
+and 1.45. Text data should be turned into vectors (e.g. array of numbers)
+before they can be fed into deep-learning models.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The
+conversion process is called <i>text vectorization</i>. One of the ways is <i>one-hot
+encoding</i>. In English there are around 10000 most frequently</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>used words.
+We can form a <i>vocabulary </i>based on those words. Any given word in in this
+<i>vocabulary</i> can be given an <i>integer index</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>So, every
+English word in the vocabulary can be represented as a length-10000 vector, in
+which only the element that corresponds to the index</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>is 1 and all
+remaining elements are 0.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=457 height=126 id="Picture 1" src="index_files/image001.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 1</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Here is
+one-hot encoding of a word.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=763 height=459 id="Picture 2" src="index_files/image002.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 2</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What if we
+have a sentence instead of a single word such as <i>the cat sat on the mat</i>.
+ In this case we can get the one-hot vectors</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>for all the
+words that makes up the sentence and put them together to form a 2D
+representation of the words. This approach</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>perfectly
+preserves the information about what words appear in the sentence and in what
+order.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=666 height=394 id="Picture 3" src="index_files/image003.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 3</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When text
+gets long, the size of the vector may get so big that is no longer manageable. A
+sentence in English contains</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>about 18
+words on average. Having the vocabulary size of 10000 and a sentence of 18
+words, it takes 10000 * 18 = 180000 </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>numbers to
+represent just a single sentence which takes much larger space than the
+sentence itself.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=718 height=524 id="Picture 4" src="index_files/image004.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 4</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>One of the
+ways to deal with this problem is to include all the words in a <i>single
+vector</i>, so that each element in the vector represents</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>whether the
+corresponding word has appeared in the text. In this representation, multiple
+elements of the vector can have the value 1.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>This is why
+it is called <i>multi-hot encoding</i>. Multi-hot encoding has a fixed length,
+which is the size of vocabulary (10000), regardless of</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>how long the
+text is. It solves the size-expansion problem. The main drawback is that we
+lose the order information. We cannot tell</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>from the multi-hot
+vector which words come first and which words next. For some problems it is OK,
+for others unacceptable.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%'>Word
+Embeddings</span></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What is <i>word
+embedding? </i>Similar to one-hot encoding (Figure 1), word embedding is a way
+to represent a word as a vector, which is</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>1D tensor in
+TensorFlow.js. However, <i>word</i> embeddings allow the values of the vectors
+elements to be trained instead of hard-coded.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When a text
+oriented neural network uses word embedding, the embedding vectors become
+trainable weight parameters of the model.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=834 height=182 id="Picture 5" src="index_files/image005.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 5</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In the past,
+in NLP (natural language processing), words were replaced with unique IDs in
+order to do calculations. The disadvantage</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>of this
+approach is that you will need to create a huge list of words and give each element
+a unique ID. Instead of using unique numbers</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>for your
+calculations, you can also use vectors to that represent their meaning,
+so-called <i>word</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=836 height=183 id="Picture 7" src="index_files/image006.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 6</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Here, each
+word represented by a vector. The length of a vector can be different. The bigger
+the vector is, the more context</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>information
+it can store and the calculation costs go up as vector size increases. The
+element count of a vector is also called the</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>number of <i>vector
+dimensions</i>.  In the picture the word <i>example </i>is represented with (4,
+2, 6) where 4 is the value of the first</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>dimension, 2
+of the second and 6 of the third dimension. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>In more
+complex examples, there could be more than 100 dimensions which can encode a
+lot of information like</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>gender,
+race, age, type of word</span></i><span style='font-size:14.0pt;line-height:
+107%'>. </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=625 height=657 id="Picture 8" src="index_files/image007.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 7</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>A word such
+as <i>one </i>is a word that is a quantity like <i>many</i> therefore, both
+words vectors are closer compared to words that are </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>more
+different in their usage.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=647 height=377 id="Picture 9" src="index_files/image008.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 8</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Here is an
+Embedding Matrix where we specified <i>Embedding dimensions</i> of 200 and the
+length of the sentence.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We will go
+deeper into these numbers when we dive into the code.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=901 height=412 id="Picture 10" src="index_files/image009.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 9</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You may
+remember that Universal Sentence Encoder<span style='color:black'>'</span>s
+Embeddings dimensions are 512!</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%'>Application</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=968 height=652 id="Picture 11" src="index_files/image010.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 10</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Our
+SharePoint list defines 60 negative Amazon comments/reviews with rating of <i>zero</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=962 height=489 id="Picture 12" src="index_files/image011.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 11</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Actually,
+these are Amazon reviews I have taken them from this site corresponding
+one-star ratings.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1062 height=558 id="Picture 13" src="index_files/image012.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 12</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The list
+includes 60 positive reviews. Altogether 120 reviews.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=995 height=494 id="Picture 14" src="index_files/image013.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 13</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Positive
+reviews correspond to Amazon five-star ratings.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=991 height=560 id="Picture 16" src="index_files/image014.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 14</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When we run
+the SPFx extension for the first time we should create Word Embeddings and
+train the model.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=500 height=338 id="Picture 17" src="index_files/image015.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 15</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We obtain
+reviews from the list to create <i>word/sentence embeddings</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1154 height=452 id="Picture 18" src="index_files/image016.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 16</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>Sentence
+embeddings</span></i><span style='font-size:14.0pt;line-height:107%'> are
+created for 120 comments and the embedding dimension is 512.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1138 height=663 id="Picture 19" src="index_files/image017.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 17</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We train the
+model after sentence embeddings have been created.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1056 height=513 id="Picture 20" src="index_files/image018.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 18</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>If you run
+the app the second time you may notice that this time there is no <i>Train</i>
+button and you can directly enter a comment.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1078 height=256 id="Picture 21" src="index_files/image019.jpg"></span><span
+style='font-size:14.0pt;line-height:107%'> </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 19</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The reason
+is that we save the model and its weights in the local storage and load them
+from the storage. No need to train the model each time.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1049 height=493 id="Picture 22" src="index_files/image020.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 20</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>When you add
+a comment the app displays <i>thumbs up</i> or <i>thumbs down</i> icon and the
+probability. The comment <i>It is worth much money </i>is a positive result </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>with 92.43% probability.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=978 height=509 id="Picture 23" src="index_files/image021.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 21</span></p>
+
+<p class=MsoNormal><i><span style='font-size:14.0pt;line-height:107%'>It is not
+worth much money </span></i><span style='font-size:14.0pt;line-height:107%'>is
+a negative comment - 64.39% probability.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=964 height=477 id="Picture 24" src="index_files/image022.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 22</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>For each
+entered review we also display a similar sentence. We display the most similar
+sentence regardless of ratings. For example, <i>It is not worth much money </i>is
+a </span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>negative
+comment while <i>The prices are a lot cheaper</i> is a positive review. We just
+find the most similar sentence.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=966 height=572 id="Picture 25" src="index_files/image023.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 23</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>For example,
+for the comment <i>Amazon is my go-to </i>we got 100%. It is because <i>Amazon
+is my go-to </i>is one of the reviews specified in the list. We have 100%
+match.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1145 height=299 id="Picture 26" src="index_files/image024.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 24</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>If you look
+at the embeddings you will see that the embedding vector produced by the
+Universal Sentence Encoder model is already normalized,</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>meaning values
+are in the range 0 and 1. Therefore, to find the similarity between two
+vectors, it is enough to compute their inner (dot) product.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Inner
+product between normalized vectors is the same as finding the cosine similarity.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1064 height=596 id="Picture 27" src="index_files/image025.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 25</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The sentence
+embedding for the comment <i>It is worth much money</i> is <i>xPredict</i> 2D
+tensor having [1, 512] shape.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1132 height=229 id="Picture 28" src="index_files/image026.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 26</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The shape is
+[1, 512] because we want to predict just for one comment - <i>It is worth much
+money</i>.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=984 height=475 id="Picture 29" src="index_files/image027.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 27</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Our reviews
+embeddings shape is [120, 512] as we have 120 comments.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1212 height=358 id="Picture 30" src="index_files/image028.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 28</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We can get
+the embedding of the first comment using <i>slice</i>. this.xTrain.slice([0,
+0], [1]) will give us the embedding of the first review in the list.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=999 height=512 id="Picture 31" src="index_files/image029.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 29</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Here is the
+first review in the list.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Now, we
+should calculate the inner/dot product of each review (this.xTrain.slice([<b>i</b>,
+0], [1]) ) and our comment <i>It is worth much money</i> xPredict (Figure 25) and
+find the highest score.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>The highest
+score will give us the most similar sentence.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=901 height=448 id="Picture 32" src="index_files/image030.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 30</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Let<span
+style='color:black'>'</span>s test dot product. Our sample xTrain shape is
+[1,3] for testing (embeddings of an existing review)</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>xPredict is
+the comment<span style='color:black'>'</span>s embeddings (<i>It is worth much
+money)</i> which has the same shape. You see that we cannot do dot product
+operation.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=882 height=343 id="Picture 34" src="index_files/image031.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 31</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>What we have
+to do is <i>transpose</i> xPredict. Actually, we flipped xPredict. Previously, the
+tensor<span style='color:black'>'</span>s shape was [1, 3] (1 row and 3 columns)
+</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>now it became
+[3, 1] (3 rows and 1 column). The result is a tensor with a value of 26 (1 * 3
++ 2 * 4 + 3 * 5 = 26).</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=797 height=512 id="Picture 35" src="index_files/image032.png"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 32</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>We go
+through each comment and find the highest score.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'><img
+border=0 width=1017 height=633 id="Picture 36" src="index_files/image033.jpg"></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>Figure 33</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>You see the
+result.  <i>I find the items with a good price</i> is the most similar
+sentence.</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

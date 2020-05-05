@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+
+  "id": "97099def-43de-4d64-a149-2ae41853f0ef",
+  "alias": "AmazonReviewsCommandSet",
+  "componentType": "Extension",
+  "extensionType": "ListViewCommandSet",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "items": {
+    "encode": {
+      "title": { "default": "Amazon Ratings" },
+      "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAUCAYAAADskT9PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAQWSURBVEhLxVZfTFtlFP/dW3rb21LAlVoYo6WbGGw2E+PiAwy2QEPYgnVmiRpxMf7dYlhIFBMisvgwH4yJW9SwlyVGkaeBPshiAuL2YicP80HjNNtAxsJgUP4MSttbeu/xfLctgUQnT/aXfPm+e86553znd8733SvdnblHyCNkovzFF7Hl7DpvkCVJyi7/f4jY+WcgO+cNWzYgmsIwDHMI5NZi5HS5pt0s3/xeTvYg/WZsHENhVOrxQCnI7Gn67iwqdpbBYK3MbRJPaHCoNqyuxhFbi6G87GHTTlvXsRCNYme513wWmL03D6/XA9FdK2yv62k8VFKUUTI4pll/gQ0GnE4nut7thIvncOvTZvBwaxhvd3Rgj8+PwYEBFBe6MHTpO6h2O+pq6+Dk+bNz5+B2uxEMBlFfW4unntyP4iIXXn7pOB4J7MaVyz/i1s0baD1yBIebW/DCc8/D5XJlozIEA7xjunFznHpOn2YiiIpUB0UiEfKWeqir6z1qDoWovu4AdbS3096ax+iXa9fofO95ujN1R7BHwsfk5CRV7aqkY88eo74v+6jK56dLQ0PEedLY2Bgpkkxff9VPhU4nXb/+J83NLxCzTBsX0Y4dbvwcuYqG+gZYCgq4FFYQ03T0aBh7Hq1BUyiEetZZWbfL58OHZ86g/dQp+CsqzIz7+/qh2G0Y+GYAw8MjONTYiKamEBw2FRO3xlEZqELb8Rehqg6QoW8tgaIouDw6jCujo/h+eBhLqyuYi84jmYgjHuea8/PK6qpZe7HdT8+eRbnXi573u3F7ehoT4+Po7unmDSs4+eYJNBxqYH+juBr5CWtaAj6/D0vRBSST6+xvjRsxk7SApfOdzg90ZsHvD2BhcRFfXLiAN06cRE1wH+K6gkZ2RqSjkjMt55FK63idg4yMjiDKTg82HIQ/UI39wQq81RbCVNTAK6+9iuXlZXze24uLFweh2uxYXFpGc0sLN+gsDjCTdu4fcSLMUyDKYLFY4CwshIWpWZdswMQQ1PUZ3C9tguTZDehczFSCS2NBKpXkE+GEwQQaVglaglDy+yegtRlYXOWYr25HoZW1sgxN05BOp5l6FbFYDA5ucsEC6cwCV2HLMcxBVEdX3VCmfoDj148haXPQqtug+cIw7B7mzc4GScjaImx/DcJ2+1tolc+wrhh6yV7o7if4otAyzhii3sL/5jmHf/8ci0ukwA7dWQLr3B9Qf/sItukIpFSU39JBsg1k9UALHEZ8XyfSRWWsH0Pa/Tjk1IqImnX0YPzH/wCreMfEGRtKEcflrNJJlqX5TT4lipPZknlT9yFxxiTbeU5tO7iAJM7iZkr+EWZ5xGAKTVtJrLLyLEx5xma7EOXY3sdIOJfYlOdM+GxgU54dGUF23j7y/D8g4W+2BAHbdMFpigAAAABJRU5ErkJggg==",
+      "type": "command"
+    }
+  }
+}
