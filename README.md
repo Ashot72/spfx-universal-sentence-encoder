@@ -18,4 +18,4 @@ To get started.
 
 Go to [Amazon Reviews (SPFx) Video](https://youtu.be/6e3TPawyhRQ) page
 
-Go to [Amazon Reviews (SPFx) description](https://github.com/Ashot72/spfx-universal-sentence-encoder/index.html) page
+Go to [Amazon Reviews (SPFx) description](https://ashot72.github.io/spfx-universal-sentence-encoder/) page
